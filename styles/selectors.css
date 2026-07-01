@@ -160,11 +160,18 @@
     }
 
     html[data-kt-theme="dark"] .kp-kts-richtext-dark [data-kt-keep],
-    html[data-kt-theme="dim"] .kp-kts-richtext-dark [data-kt-keep],
+    html[data-kt-theme="dim"] .kp-kts-richtext-dark [data-kt-keep] {
+      background-color: revert;
+      color: revert;
+    }
+
+    /* Descendants must inherit from the preserved inline-colored ancestor;
+       revert would break inheritance (a <b> inside a red span turned default
+       color instead of red). */
     html[data-kt-theme="dark"] .kp-kts-richtext-dark [data-kt-keep] *,
     html[data-kt-theme="dim"] .kp-kts-richtext-dark [data-kt-keep] * {
       background-color: revert;
-      color: revert;
+      color: inherit;
     }
 
     /* ---- do not touch attachments / images: no invert filter anywhere.
