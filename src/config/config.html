@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja">
+  <body>
+    <div class="kp-kts-config">
+      <header class="kp-kts-head">
+        <h1>kintone-theme-switcher</h1>
+        <p class="kp-kts-lead">アプリの画面にダークテーマを適用します。</p>
+      </header>
+
+      <section class="kp-kts-card">
+        <h2 class="kp-kts-card-title">テーマ</h2>
+
+        <div class="kp-kts-field">
+          <span class="kp-kts-label">既定テーマ</span>
+          <div class="kp-kts-radios" id="kp-kts-default-theme">
+            <label><input type="radio" name="defaultTheme" value="light" /> ライト</label>
+            <label><input type="radio" name="defaultTheme" value="auto" /> 自動</label>
+            <label><input type="radio" name="defaultTheme" value="dark" /> ダーク</label>
+            <label><input type="radio" name="defaultTheme" value="dim" /> ディム</label>
+          </div>
+          <p class="kp-kts-help">
+            ユーザーが切替していない場合に適用するテーマです。自動は OS の配色設定に従います。
+          </p>
+          <p class="kp-kts-error" id="kp-kts-default-theme-error" hidden></p>
+        </div>
+
+        <div class="kp-kts-field">
+          <label class="kp-kts-check">
+            <input type="checkbox" id="kp-kts-allow-switch" /> ユーザーによる切替を許可
+          </label>
+          <p class="kp-kts-help">
+            オフにすると全員に既定テーマを適用し、ヘッダーの切替ボタンを表示しません。
+          </p>
+        </div>
+      </section>
+
+      <section class="kp-kts-card">
+        <h2 class="kp-kts-card-title">リッチテキスト</h2>
+        <div class="kp-kts-field">
+          <span class="kp-kts-label">リッチテキストフィールドの表示</span>
+          <div class="kp-kts-radios" id="kp-kts-richtext">
+            <label
+              ><input type="radio" name="richTextPolicy" value="keepLight" /> 白地のまま維持</label
+            >
+            <label
+              ><input type="radio" name="richTextPolicy" value="tryDark" /> ダーク化を試みる</label
+            >
+          </div>
+          <p class="kp-kts-help">文字色や背景色を指定している場合、その指定は維持されます。</p>
+          <p class="kp-kts-error" id="kp-kts-richtext-error" hidden></p>
+        </div>
+      </section>
+    </div>
+
+    <div class="kp-kts-bar">
+      <p class="kp-kts-status" id="kp-kts-status" role="status"></p>
+      <button type="button" class="kp-kts-btn-text" id="kp-kts-cancel">キャンセル</button>
+      <button type="button" class="kp-kts-btn-primary" id="kp-kts-save">保存</button>
+    </div>
+  </body>
+</html>

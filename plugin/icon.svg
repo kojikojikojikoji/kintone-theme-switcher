@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+  <!-- Theme switcher: a disc split into a light half (rays) and a dark half
+       (crescent). Single primary color, 2px stroke, no gradient. -->
+  <circle cx="28" cy="28" r="16" stroke="#0f6db3" stroke-width="2" />
+  <path d="M28 12v32" stroke="#0f6db3" stroke-width="2" />
+  <path d="M28 12a16 16 0 0 1 0 32z" fill="#0f6db3" />
+  <g stroke="#0f6db3" stroke-width="2" stroke-linecap="round">
+    <path d="M28 6v2" />
+    <path d="M13.5 13.5l1.4 1.4" />
+    <path d="M6 28h2" />
+    <path d="M13.5 42.5l1.4-1.4" />
+  </g>
+</svg>

@@ -1,0 +1,151 @@
+/*
+ * Config screen styling. Shared visual language for the plugin series (common
+ * spec section 7). Shipped in the plugin zip as config.css. This styles the
+ * settings form only; it is unrelated to the record-screen theme tokens.
+ */
+
+:root {
+  --kp-text: #1f2933;
+  --kp-text-sub: #5f6b7a;
+  --kp-bg: #ffffff;
+  --kp-bg-section: #f7f8fa;
+  --kp-border: #d5dbe1;
+  --kp-primary: #0f6db3;
+  --kp-primary-hover: #0b578f;
+  --kp-danger: #b3261e;
+  --kp-focus: #0f6db3;
+  --kp-radius: 6px;
+  --kp-space: 8px;
+  --kp-font:
+    -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic",
+    Meiryo, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0 0 72px;
+  color: var(--kp-text);
+  background: var(--kp-bg-section);
+  font-family: var(--kp-font);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.kp-kts-config {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 16px 0;
+}
+
+.kp-kts-head h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.kp-kts-lead {
+  margin: 4px 0 16px;
+  color: var(--kp-text-sub);
+}
+
+.kp-kts-card {
+  background: var(--kp-bg);
+  border: 1px solid var(--kp-border);
+  border-radius: var(--kp-radius);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.kp-kts-card-title {
+  margin: 0 0 16px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.kp-kts-field {
+  margin-bottom: 16px;
+}
+
+.kp-kts-field:last-child {
+  margin-bottom: 0;
+}
+
+.kp-kts-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.kp-kts-radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.kp-kts-radios label,
+.kp-kts-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.kp-kts-help {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: var(--kp-text-sub);
+}
+
+.kp-kts-error {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: var(--kp-danger);
+}
+
+.kp-kts-bar {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: 12px 16px;
+  background: var(--kp-bg);
+  border-top: 1px solid var(--kp-border);
+}
+
+.kp-kts-status {
+  margin: 0 auto 0 0;
+  font-size: 13px;
+  color: var(--kp-text-sub);
+}
+
+.kp-kts-btn-text {
+  border: none;
+  background: transparent;
+  color: var(--kp-text-sub);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 12px;
+}
+
+.kp-kts-btn-primary {
+  border: none;
+  background: var(--kp-primary);
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 20px;
+  border-radius: var(--kp-radius);
+}
+
+.kp-kts-btn-primary:hover {
+  background: var(--kp-primary-hover);
+}
+
+.kp-kts-btn-primary:focus-visible,
+.kp-kts-btn-text:focus-visible {
+  outline: 2px solid var(--kp-focus);
+  outline-offset: 2px;
+}
