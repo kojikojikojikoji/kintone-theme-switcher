@@ -1,5 +1,7 @@
 # kintone-theme-switcher
 
+Documentation in Japanese: [README.ja.md](./README.ja.md)
+
 A kintone plugin that applies a dark, dim, light, or OS-following theme to the
 record screens of the app it is installed on. It injects a CSS theme and stores
 the user's choice in the browser. It sends no network requests and calls no REST
