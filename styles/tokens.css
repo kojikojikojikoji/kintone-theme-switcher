@@ -1,0 +1,55 @@
+/*
+ * tokens.css - color definitions only.
+ * This file must not contain any kintone DOM selectors. It only declares the
+ * --kt-* custom properties per resolved theme, plus the one-shot transition
+ * rule. selectors.css maps these tokens onto kintone's DOM.
+ *
+ * The token names here are a public interface consumed by other plugins in the
+ * series (see requirement FR-11). Adding tokens is allowed; renaming or
+ * removing an existing token is a breaking change.
+ */
+
+html[data-kt-theme="dark"] {
+  --kt-bg: #1b1e23;
+  --kt-bg-elevated: #23272e;
+  --kt-text: #d6dde4;
+  --kt-text-sub: #9aa4af;
+  --kt-border: #3a4048;
+  --kt-link: #6cb2e8;
+  --kt-row-hover: #2a2f37;
+  --kt-row-selected: #1f3a52;
+  --kt-input-bg: #15181c;
+  --kt-input-border: #3a4048;
+  --kt-header-bg: #23272e;
+  --kt-focus: #6cb2e8;
+  --kt-shadow: rgba(0, 0, 0, 0.5);
+  /* Base for the keepLight rich-text island (FR-8 / 6.4). White in every theme. */
+  --kt-richtext-keep-bg: #ffffff;
+}
+
+html[data-kt-theme="dim"] {
+  --kt-bg: #2e343c;
+  --kt-bg-elevated: #383f49;
+  --kt-text: #e3e8ed;
+  --kt-text-sub: #a8b2bc;
+  --kt-border: #4d555f;
+  --kt-link: #8fc3ee;
+  --kt-row-hover: #414956;
+  --kt-row-selected: #35516c;
+  --kt-input-bg: #272c33;
+  --kt-input-border: #4d555f;
+  --kt-header-bg: #383f49;
+  --kt-focus: #8fc3ee;
+  --kt-shadow: rgba(0, 0, 0, 0.4);
+  --kt-richtext-keep-bg: #ffffff;
+}
+
+/*
+ * One-shot transition, toggled by JS only at the moment the theme changes
+ * (button, OS change, storage event). Constant transitions are avoided because
+ * they slow rendering on large lists (FR-6).
+ */
+html.kp-kts-transition,
+html.kp-kts-transition * {
+  transition: background-color 0.2s ease;
+}

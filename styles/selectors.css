@@ -1,0 +1,177 @@
+/*
+ * selectors.css - maps the --kt-* tokens (defined in tokens.css) onto kintone's
+ * DOM. This file must not contain color literals (no hex, no rgb()/rgba()); the
+ * `npm run lint` CSS check enforces that. It only references var(--kt-*).
+ *
+ * This file plus src/kintone/dom-map.ts are the single maintenance surface when
+ * kintone changes its DOM (requirement FR-7). If a kintone update breaks the
+ * theme, edit the selector strings here (and in dom-map.ts) and nowhere else.
+ *
+ * The kintone class names below are not part of any public contract and vary by
+ * kintone version. TODO(spec FR-7): verify against the running kintone version
+ * before release; the list/detail/input class names are the parts most likely
+ * to drift.
+ *
+ * Everything is wrapped in `@media screen` + `@media not (forced-colors: active)`
+ * so the theme is fully disabled when printing (EC-5) and when the OS high
+ * contrast / forced-colors mode is on (EC-3), leaving kintone's own colors.
+ */
+
+@media screen {
+  @media not (forced-colors: active) {
+    /* ---- shared for dark and dim (structure identical, only tokens differ) ---- */
+    html[data-kt-theme="dark"],
+    html[data-kt-theme="dim"] {
+      background-color: var(--kt-bg);
+      color: var(--kt-text);
+    }
+
+    /* Page background and main containers. kintone paints white on body and on
+       several wrapper elements with high specificity, so !important is required
+       here to win against those defaults. */
+    html[data-kt-theme="dark"] body,
+    html[data-kt-theme="dim"] body,
+    html[data-kt-theme="dark"] .gaia-argoui-app,
+    html[data-kt-theme="dim"] .gaia-argoui-app,
+    html[data-kt-theme="dark"] #contents-body-gaia,
+    html[data-kt-theme="dim"] #contents-body-gaia {
+      background-color: var(--kt-bg) !important;
+      color: var(--kt-text);
+    }
+
+    /* Toolbar, filter bar, app header. */
+    html[data-kt-theme="dark"] .gaia-argoui-app-toolbar,
+    html[data-kt-theme="dim"] .gaia-argoui-app-toolbar,
+    html[data-kt-theme="dark"] .gaia-argoui-app-index-toolbar,
+    html[data-kt-theme="dim"] .gaia-argoui-app-index-toolbar,
+    html[data-kt-theme="dark"] .gaia-argoui-app-menu,
+    html[data-kt-theme="dim"] .gaia-argoui-app-menu {
+      background-color: var(--kt-header-bg) !important;
+      color: var(--kt-text);
+      border-color: var(--kt-border);
+    }
+
+    /* ---- record list table ---- */
+    html[data-kt-theme="dark"] .recordlist-gaia,
+    html[data-kt-theme="dim"] .recordlist-gaia,
+    html[data-kt-theme="dark"] .recordlist-row-gaia,
+    html[data-kt-theme="dim"] .recordlist-row-gaia,
+    html[data-kt-theme="dark"] .recordlist-cell-gaia,
+    html[data-kt-theme="dim"] .recordlist-cell-gaia {
+      background-color: var(--kt-bg) !important;
+      color: var(--kt-text);
+      border-color: var(--kt-border) !important;
+    }
+
+    html[data-kt-theme="dark"] .recordlist-header-gaia,
+    html[data-kt-theme="dim"] .recordlist-header-gaia,
+    html[data-kt-theme="dark"] .recordlist-header-cell-gaia,
+    html[data-kt-theme="dim"] .recordlist-header-cell-gaia {
+      background-color: var(--kt-header-bg) !important;
+      color: var(--kt-text-sub);
+      border-color: var(--kt-border) !important;
+    }
+
+    html[data-kt-theme="dark"] .recordlist-row-gaia:hover,
+    html[data-kt-theme="dim"] .recordlist-row-gaia:hover,
+    html[data-kt-theme="dark"] .recordlist-row-gaia:hover .recordlist-cell-gaia,
+    html[data-kt-theme="dim"] .recordlist-row-gaia:hover .recordlist-cell-gaia {
+      background-color: var(--kt-row-hover) !important;
+    }
+
+    html[data-kt-theme="dark"] .recordlist-row-checked-gaia,
+    html[data-kt-theme="dim"] .recordlist-row-checked-gaia,
+    html[data-kt-theme="dark"] .recordlist-row-checked-gaia .recordlist-cell-gaia,
+    html[data-kt-theme="dim"] .recordlist-row-checked-gaia .recordlist-cell-gaia {
+      background-color: var(--kt-row-selected) !important;
+    }
+
+    /* ---- record detail ---- */
+    html[data-kt-theme="dark"] .gaia-argoui-app-show,
+    html[data-kt-theme="dim"] .gaia-argoui-app-show,
+    html[data-kt-theme="dark"] .layout-gaia,
+    html[data-kt-theme="dim"] .layout-gaia,
+    html[data-kt-theme="dark"] .control-gaia,
+    html[data-kt-theme="dim"] .control-gaia {
+      background-color: var(--kt-bg-elevated);
+      color: var(--kt-text);
+    }
+
+    html[data-kt-theme="dark"] .control-label-gaia,
+    html[data-kt-theme="dim"] .control-label-gaia,
+    html[data-kt-theme="dark"] .subtable-label-gaia,
+    html[data-kt-theme="dim"] .subtable-label-gaia {
+      color: var(--kt-text-sub) !important;
+    }
+
+    html[data-kt-theme="dark"] .control-value-gaia,
+    html[data-kt-theme="dim"] .control-value-gaia {
+      color: var(--kt-text);
+    }
+
+    /* ---- inputs ---- */
+    html[data-kt-theme="dark"] .input-text-gaia,
+    html[data-kt-theme="dim"] .input-text-gaia,
+    html[data-kt-theme="dark"] .input-single-gaia,
+    html[data-kt-theme="dim"] .input-single-gaia,
+    html[data-kt-theme="dark"] .textarea-gaia,
+    html[data-kt-theme="dim"] .textarea-gaia,
+    html[data-kt-theme="dark"] input[type="text"],
+    html[data-kt-theme="dim"] input[type="text"],
+    html[data-kt-theme="dark"] textarea,
+    html[data-kt-theme="dim"] textarea,
+    html[data-kt-theme="dark"] select,
+    html[data-kt-theme="dim"] select {
+      background-color: var(--kt-input-bg) !important;
+      color: var(--kt-text) !important;
+      border-color: var(--kt-input-border) !important;
+    }
+
+    /* ---- links ---- */
+    html[data-kt-theme="dark"] a,
+    html[data-kt-theme="dim"] a {
+      color: var(--kt-link);
+    }
+
+    /* ---- focus ring ---- */
+    html[data-kt-theme="dark"] :focus-visible,
+    html[data-kt-theme="dim"] :focus-visible {
+      outline-color: var(--kt-focus);
+    }
+
+    /* ---- rich text: keepLight white island (default policy, FR-8 / 6.4).
+       Backgrounds/borders come from tokens; the white base is a dedicated token
+       so no color literal lives in this file. */
+    html[data-kt-theme="dark"] .kp-kts-richtext-keep,
+    html[data-kt-theme="dim"] .kp-kts-richtext-keep {
+      background-color: var(--kt-richtext-keep-bg);
+      border: 1px solid var(--kt-border);
+      border-radius: 6px;
+      padding: 8px;
+    }
+
+    /* ---- rich text: tryDark policy (FR-10). Applied only when JS adds the
+       kp-kts-richtext-dark class. Descendants carrying an inline color/background
+       are exempted via data-kt-keep so their user-specified colors survive. */
+    html[data-kt-theme="dark"] .kp-kts-richtext-dark,
+    html[data-kt-theme="dim"] .kp-kts-richtext-dark {
+      background-color: var(--kt-bg-elevated);
+      color: var(--kt-text);
+    }
+
+    html[data-kt-theme="dark"] .kp-kts-richtext-dark [data-kt-keep],
+    html[data-kt-theme="dim"] .kp-kts-richtext-dark [data-kt-keep],
+    html[data-kt-theme="dark"] .kp-kts-richtext-dark [data-kt-keep] *,
+    html[data-kt-theme="dim"] .kp-kts-richtext-dark [data-kt-keep] * {
+      background-color: revert;
+      color: revert;
+    }
+
+    /* ---- do not touch attachments / images: no invert filter anywhere.
+       Kept explicit so a future edit does not add one by accident (FR-8, EC-17). */
+    html[data-kt-theme="dark"] img,
+    html[data-kt-theme="dim"] img {
+      filter: none;
+    }
+  }
+}
